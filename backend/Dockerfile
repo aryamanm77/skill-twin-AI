@@ -17,6 +17,8 @@ COPY requirements.txt .
 # Install dependencies (installing torch CPU explicitly to save massive amounts of space)
 RUN pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu
 RUN pip install --no-cache-dir -r requirements.txt
+# Ultralytics forces opencv-python, which breaks headless. We must uninstall it and force headless.
+RUN pip uninstall -y opencv-python && pip install --no-cache-dir opencv-python-headless==4.10.0.84
 
 # Copy the rest of the backend code
 COPY . .
