@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-surface-700;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-surface-950 text-slate-100 font-sans antialiased;
+    background-image: radial-gradient(ellipse at 20% 50%, rgba(37,99,235,0.05) 0%, transparent 50%),
+                      radial-gradient(ellipse at 80% 20%, rgba(139,92,246,0.04) 0%, transparent 50%);
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface-900 border border-surface-700/50 rounded-xl;
+  }
+  
+  .card-glow-blue {
+    @apply card shadow-glow-blue;
+  }
+  
+  .btn-primary {
+    @apply bg-brand-600 hover:bg-brand-500 text-white font-medium px-4 py-2 rounded-lg 
+           transition-all duration-200 flex items-center gap-2 
+           focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-surface-900;
+  }
+  
+  .btn-ghost {
+    @apply text-slate-300 hover:text-white hover:bg-surface-800 font-medium px-3 py-2 rounded-lg 
+           transition-all duration-200 flex items-center gap-2;
+  }
+  
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-500 text-white font-medium px-4 py-2 rounded-lg 
+           transition-all duration-200 flex items-center gap-2;
+  }
+  
+  .btn-success {
+    @apply bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-4 py-2 rounded-lg 
+           transition-all duration-200 flex items-center gap-2;
+  }
+  
+  .label {
+    @apply text-xs font-medium text-slate-400 uppercase tracking-wider;
+  }
+  
+  .metric-value {
+    @apply text-2xl font-bold text-white;
+  }
+  
+  .metric-label {
+    @apply text-xs text-slate-400;
+  }
+  
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+  
+  .status-dot-active {
+    @apply status-dot bg-accent-green animate-pulse;
+  }
+  
+  .status-dot-inactive {
+    @apply status-dot bg-slate-600;
+  }
+  
+  .status-dot-warning {
+    @apply status-dot bg-accent-amber animate-pulse;
+  }
+  
+  .status-dot-error {
+    @apply status-dot bg-accent-red animate-pulse;
+  }
+  
+  .panel-header {
+    @apply flex items-center justify-between px-4 py-3 border-b border-surface-700/50;
+  }
+  
+  .panel-title {
+    @apply text-sm font-semibold text-slate-200 uppercase tracking-wider;
+  }
+  
+  .score-bar {
+    @apply h-2 rounded-full bg-surface-700 overflow-hidden;
+  }
+  
+  .score-bar-fill {
+    @apply h-full rounded-full transition-all duration-700 ease-out;
+  }
+  
+  .feedback-banner {
+    @apply rounded-lg px-4 py-3 text-sm font-medium flex items-center gap-3 animate-slide-up;
+  }
+  
+  .feedback-success {
+    @apply feedback-banner bg-emerald-500/10 border border-emerald-500/30 text-emerald-300;
+  }
+  
+  .feedback-warning {
+    @apply feedback-banner bg-amber-500/10 border border-amber-500/30 text-amber-300;
+  }
+  
+  .feedback-error {
+    @apply feedback-banner bg-red-500/10 border border-red-500/30 text-red-300;
+  }
+  
+  .feedback-info {
+    @apply feedback-banner bg-blue-500/10 border border-blue-500/30 text-blue-300;
+  }
+  
+  .step-timeline-item {
+    @apply flex items-center gap-3 px-4 py-2 rounded-lg text-sm transition-all duration-300;
+  }
+  
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white 
+           hover:bg-surface-800 transition-all duration-200 text-sm font-medium;
+  }
+  
+  .nav-link-active {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-white bg-brand-600/20 
+           border border-brand-500/30 text-sm font-medium;
+  }
+
+  .test-mode-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium
+           bg-cyan-500/15 border border-cyan-500/30 text-cyan-300;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme(colors.surface.700) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: theme(colors.surface.700);
+    border-radius: 2px;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-400 to-purple-400;
+  }
+  
+  .bg-grid {
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "domains": [
+    {
+      "id": "manufacturing",
+      "name": "Manufacturing",
+      "icon": "🏭",
+      "description": "Industrial manufacturing and assembly procedures",
+      "procedures": ["basic_assembly"]
+    },
+    {
+      "id": "construction",
+      "name": "Construction",
+      "icon": "🏗",
+      "description": "Construction and building procedures",
+      "procedures": []
+    },
+    {
+      "id": "automotive",
+      "name": "Automotive",
+      "icon": "🚗",
+      "description": "Automotive assembly and maintenance",
+      "procedures": []
+    },
+    {
+      "id": "electrical",
+      "name": "Electrical",
+      "icon": "🔌",
+      "description": "Electrical installation and wiring",
+      "procedures": []
+    },
+    {
+      "id": "laboratory",
+      "name": "Laboratory",
+      "icon": "🧪",
+      "description": "Scientific laboratory procedures",
+      "procedures": []
+    },
+    {
+      "id": "vocational",
+      "name": "Vocational Training",
+      "icon": "🎓",
+      "description": "ITI and vocational skill programs",
+      "procedures": []
+    }
+  ]
+}

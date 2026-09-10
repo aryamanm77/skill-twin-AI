@@ -1,0 +1,179 @@
+{
+  "id": "basic_assembly",
+  "name": "Basic Component Assembly",
+  "domain": "manufacturing",
+  "description": "A fundamental assembly procedure using 3 components and 1 tool. Suitable for demonstrating SkillTwin AI capabilities.",
+  "version": "1.0",
+  "author": "system",
+  "scoring_weights": {
+    "sequence": 0.30,
+    "object_accuracy": 0.25,
+    "position": 0.20,
+    "timing": 0.15,
+    "movement": 0.10
+  },
+  "tolerances": {
+    "position_px": 80,
+    "timing_factor": 2.5,
+    "trajectory_dtw": 0.40
+  },
+  "workspace_zones": [
+    {
+      "id": "component_a_source",
+      "name": "Component A Source",
+      "color": "#3B82F6",
+      "normalized": {"x": 0.05, "y": 0.60, "w": 0.18, "h": 0.30}
+    },
+    {
+      "id": "component_b_source",
+      "name": "Component B Source",
+      "color": "#8B5CF6",
+      "normalized": {"x": 0.25, "y": 0.60, "w": 0.18, "h": 0.30}
+    },
+    {
+      "id": "component_c_source",
+      "name": "Component C Source",
+      "color": "#EC4899",
+      "normalized": {"x": 0.45, "y": 0.60, "w": 0.18, "h": 0.30}
+    },
+    {
+      "id": "tool_zone",
+      "name": "Tool Zone",
+      "color": "#F59E0B",
+      "normalized": {"x": 0.68, "y": 0.60, "w": 0.18, "h": 0.30}
+    },
+    {
+      "id": "assembly_zone",
+      "name": "Assembly Zone",
+      "color": "#10B981",
+      "normalized": {"x": 0.30, "y": 0.10, "w": 0.40, "h": 0.40}
+    }
+  ],
+  "objects": [
+    {
+      "id": "component_a",
+      "name": "Component A",
+      "display_name": "Component A",
+      "yolo_classes": ["bottle", "cup", "bowl"],
+      "color": "#3B82F6",
+      "source_zone": "component_a_source"
+    },
+    {
+      "id": "component_b",
+      "name": "Component B",
+      "display_name": "Component B",
+      "yolo_classes": ["remote", "mouse", "cell phone"],
+      "color": "#8B5CF6",
+      "source_zone": "component_b_source"
+    },
+    {
+      "id": "component_c",
+      "name": "Component C",
+      "display_name": "Component C",
+      "yolo_classes": ["book", "laptop", "keyboard"],
+      "color": "#EC4899",
+      "source_zone": "component_c_source"
+    },
+    {
+      "id": "tool",
+      "name": "Tool",
+      "display_name": "Assembly Tool",
+      "yolo_classes": ["scissors", "knife", "fork"],
+      "color": "#F59E0B",
+      "source_zone": "tool_zone"
+    }
+  ],
+  "steps": [
+    {
+      "id": "step_1",
+      "order": 1,
+      "name": "Pick Component A",
+      "description": "Pick up Component A from its source zone",
+      "action": "pick",
+      "expected_object": "component_a",
+      "source_zone": "component_a_source",
+      "target_zone": null,
+      "expected_duration_s": 3.0,
+      "max_duration_s": 10.0,
+      "min_duration_s": 0.5
+    },
+    {
+      "id": "step_2",
+      "order": 2,
+      "name": "Move Component A to Assembly Zone",
+      "description": "Carry Component A to the assembly zone",
+      "action": "move",
+      "expected_object": "component_a",
+      "source_zone": "component_a_source",
+      "target_zone": "assembly_zone",
+      "expected_duration_s": 4.0,
+      "max_duration_s": 15.0,
+      "min_duration_s": 1.0
+    },
+    {
+      "id": "step_3",
+      "order": 3,
+      "name": "Place Component A",
+      "description": "Place Component A in the assembly zone",
+      "action": "place",
+      "expected_object": "component_a",
+      "source_zone": null,
+      "target_zone": "assembly_zone",
+      "expected_duration_s": 2.0,
+      "max_duration_s": 8.0,
+      "min_duration_s": 0.5
+    },
+    {
+      "id": "step_4",
+      "order": 4,
+      "name": "Pick Component B",
+      "description": "Pick up Component B from its source zone",
+      "action": "pick",
+      "expected_object": "component_b",
+      "source_zone": "component_b_source",
+      "target_zone": null,
+      "expected_duration_s": 3.0,
+      "max_duration_s": 10.0,
+      "min_duration_s": 0.5
+    },
+    {
+      "id": "step_5",
+      "order": 5,
+      "name": "Place Component B",
+      "description": "Place Component B in the assembly zone with Component A",
+      "action": "place",
+      "expected_object": "component_b",
+      "source_zone": null,
+      "target_zone": "assembly_zone",
+      "expected_duration_s": 4.0,
+      "max_duration_s": 15.0,
+      "min_duration_s": 0.5
+    },
+    {
+      "id": "step_6",
+      "order": 6,
+      "name": "Tool Operation",
+      "description": "Use the tool in the assembly zone",
+      "action": "tool_use",
+      "expected_object": "tool",
+      "source_zone": "tool_zone",
+      "target_zone": "assembly_zone",
+      "expected_duration_s": 5.0,
+      "max_duration_s": 20.0,
+      "min_duration_s": 1.0
+    },
+    {
+      "id": "step_7",
+      "order": 7,
+      "name": "Procedure Complete",
+      "description": "All components assembled and tool returned",
+      "action": "complete",
+      "expected_object": null,
+      "source_zone": null,
+      "target_zone": null,
+      "expected_duration_s": 1.0,
+      "max_duration_s": 5.0,
+      "min_duration_s": 0.1
+    }
+  ]
+}
